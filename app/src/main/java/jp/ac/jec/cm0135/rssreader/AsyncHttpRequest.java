@@ -17,6 +17,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class AsyncHttpRequest implements Runnable{
     private Handler handler;
     private MainActivity mainActivity;
+    private Main2Activity main2Activity;
     private String urlStr;
     private String resStr;
 
@@ -25,7 +26,6 @@ public class AsyncHttpRequest implements Runnable{
         this.mainActivity = mainActivity;
         this.urlStr = urlStr;
     }
-
     @Override
     public void run() {
         Log.i("RSSReader", "BackGroundTask start...");
@@ -58,7 +58,7 @@ public class AsyncHttpRequest implements Runnable{
     }
 
     private void onPostExecute() {
-        Log.i("Android205", "onPostExecute start...");
+        Log.i("RSSReader", "onPostExecute start...");
         //非同期処理後に実行する処理を技術する
 
         ArrayList<RssItem> ary = JsonHelper.parseJson(resStr);

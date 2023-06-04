@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.HandlerCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -39,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     protected RowModelAdapter adapter;
     private ExecutorService executorService;
     private TextView txtLastUpdated;
+    private TextView title;
     private String selectedCategory;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         selectedCategory = intent.getStringExtra("category");
+        title = findViewById(R.id.title);
 
         txtLastUpdated = findViewById(R.id.txtLastUpdated);
         Looper mainLooper = getMainLooper();
@@ -101,10 +105,13 @@ public class MainActivity extends AppCompatActivity {
             InputStream in = null;
             if (selectedCategory.equals("スポーツニュース")) {
                 in = getAssets().open("rssSport.json");
+                title.setText("Sports News");
             }else if (selectedCategory.equals("ITニュース") ) {
                 in = getAssets().open("rssIT.json");
+                title.setText("IT News");
             }else if (selectedCategory.equals("芸能ニュース")) {
                 in = getAssets().open("rssEnt.json");
+                title.setText("Entertainment News");
             }
             br = new BufferedReader(new InputStreamReader(in));
             StringBuilder sb = new StringBuilder();

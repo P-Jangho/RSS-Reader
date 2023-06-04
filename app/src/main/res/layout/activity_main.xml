@@ -9,13 +9,16 @@
     android:background="#FFCC88">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="cursive"
-        android:text="BasketBall News"
+        android:text="News"
         android:textSize="36sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        tools:ignore="InvalidId" />
 
     <TextView
         android:id="@+id/txtLastUpdated"
@@ -24,12 +27,15 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         android:textColor="@android:color/black"
-        android:layout_gravity="right"/>
+        android:layout_gravity="right"
+        android:layout_marginBottom="20dp"/>
 
     <ListView
         android:id="@+id/resultList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@drawable/line_himo01_s04"
-        android:scrollingCache="false"/>
+        android:scrollingCache="false"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 </LinearLayout>
